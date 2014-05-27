@@ -39,4 +39,46 @@ public class Kolejka {
         sumaprzemieszczen = b;
         glowica = o.getNrBloku(); 
    }
+   
+    /**
+    * Przesuwanie głowicy od początku do końca obszaru dyskowego. Jednak można dostać się z zewnątrz setterem do ZcJ
+    * i zmieniając wartość wymusić ruch głowicy w drugą strone.
+    */
+   
+   public void przesuwajGlowice(){
+       if(ZcJ == 0){
+           glowica++;
+           b++;
+           System.out.println("Glowica obszar nr " + glowica);
+       }
+       if(ZcJ == 1){
+           glowica --;
+           b++;
+           System.out.println("Glowica obszar nr " + glowica);
+       }
+       if(glowica == 100){
+           ZcJ = 1;
+       }
+       if(glowica == 1){
+           ZcJ = 0;
+       }
+      sumaprzemieszczen = b; 
+   }
+   
+   
+   public int getSumaPrzem(){
+       return sumaprzemieszczen;
+   }
+   
+   public int getGlowica(){
+       return glowica;
+   }
+   
+   public int getZcJ(){
+       return ZcJ;
+   }
+   
+   public void setZcJ(int cokolwiek){
+       ZcJ = cokolwiek;
+   }
     
