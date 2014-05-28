@@ -1,0 +1,51 @@
+
+package sodysk;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
+
+public class C_Scan extends Kolejka{
+    private OperacjaDyskowa operacja;
+    private OperacjaDyskowa operacjaPomocnicza;
+    
+    public C_Scan(){
+        this.operacja = null;
+    }
+    
+    public OperacjaDyskowa wykonaj(LinkedList<OperacjaDyskowa> lis) throws InterruptedException{
+        if(lis.isEmpty()){
+      return null;
+     }
+     
+     else{
+        if(getZcJ() == 0){    
+         operacja = lis.getFirst();
+          do{
+             if(getZcJ() ==1){
+                 operacja = null;
+                 break;
+             }
+             przesuwajGlowice();
+             for (Iterator<OperacjaDyskowa> it = lis.iterator(); it.hasNext();) {
+                operacjaPomocnicza = it.next();
+                if(operacjaPomocnicza.getNrBloku() == getGlowica()){
+                    operacja = operacjaPomocnicza;
+                }
+           }
+          }while(!(operacja.getNrBloku() == getGlowica()));
+                if(getZcJ() == 0){
+                System.out.println("Teraz wykonuje : " + operacja);
+                System.out.println("Glowica na miejscu bloku o numerze :" + getGlowica()
+                            + " wykonano " + getSumaPrzem() + " przemieszczen Glowicy");
+                lis.remove(operacja);
+                }
+        }
+        while(getZcJ() == 1){
+            przesuwajGlowice();
+        }
+    }
+          
+     return operacja;
+   }
+}
