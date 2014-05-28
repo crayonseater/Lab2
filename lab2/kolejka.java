@@ -82,3 +82,34 @@ public class Kolejka {
        ZcJ = cokolwiek;
    }
     
+      /**
+    *  Krok odpowiadający za wygenerowanie i dodanie do listy elementów.
+    *  Cały krok znajduje się w menu.
+    */
+   
+   public void krok(){
+      duzowiecej = wiecej.nextInt(3-1+1)+1;  // dodatkowe losowanie ze względu na pochodzenie generatora (tablica)
+      for(int z=0; z<=duzowiecej; z++){
+      OperacjaDyskowa  x = l.getRandom();
+       if(x != null){
+       l.dodajDoListy(x);
+       }
+      }
+   }
+   
+   /**
+    *  To samo co wyżej tylko losowanie następuje z metody 2 zapewniającej długość i deadline operacji.
+    */
+   
+   public void innykrok(){
+        duzowiecej = wiecej.nextInt(2-1+1)+1;
+      for(int z=0; z<=duzowiecej; z++){
+      OperacjaDyskowa  x = l.getRandom2();
+       if(x != null){
+       l.dodajDoListy(x);
+       }
+      }
+   }
+   
+}
+    
