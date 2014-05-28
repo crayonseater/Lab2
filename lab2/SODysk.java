@@ -49,3 +49,309 @@ public class SODysk{
                 }
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
         }
+
+  /**
+	 * Metoda odpowiadająca za menu programu za pomocą switcha.
+	 */
+	public void menu() throws InterruptedException
+	{
+		Scanner in = new Scanner(System.in);
+		int wybor = in.nextInt();
+		switch(wybor)
+		{
+	case 1:
+                   do {
+	             wyswietlMenu2();
+                     Scanner sc = new Scanner(System.in);
+                          int liczba = sc.nextInt();
+                          
+                     if(liczba == 1){
+                       kolejka.krok();
+                       if(kolejka.l.lista.size()>0){
+                        wyswietlListe();
+                        fcfs.wykonaj(kolejka.l.lista);
+                            }
+                        }
+                     
+                     if(liczba == 2){
+                       for(int i=0; i<10; i++){
+                           kolejka.krok();
+                           if(kolejka.l.lista.size()>0){
+                           wyswietlListe();
+                            fcfs.wykonaj(kolejka.l.lista);
+                            }
+                          }
+                     }
+                     
+                     if(liczba == 3){
+                       Scanner tj = new Scanner(System.in);
+                       String klucz = " ";
+                         while(!(klucz.equals("stop"))){
+                          kolejka.krok();
+                           if(kolejka.l.lista.size()>0){
+                            wyswietlListe();
+                            fcfs.wykonaj(kolejka.l.lista);
+                            }
+                          klucz = tj.nextLine();
+                         }
+                     }
+                     
+                     if(liczba ==4){
+                         zmienna = 0;
+                         wyswietlMenu();
+                         menu();
+                     }
+                   } while(zmienna == 1);
+                   break; 
+	case 2:
+		     do {
+	             wyswietlMenu2();
+                     Scanner sc = new Scanner(System.in);
+                     int liczba = sc.nextInt();
+                          
+                     if(liczba == 1){
+                       kolejka.krok();
+                       if(kolejka.l.lista.size()>0){
+                        wyswietlListe();
+                        scan.wykonaj(kolejka.l.lista);
+                            }
+                        }
+                     
+                     if(liczba == 2){
+                       for(int i=0; i<10; i++){
+                           kolejka.krok();
+                           if(kolejka.l.lista.size()>0){
+                           wyswietlListe();
+                            scan.wykonaj(kolejka.l.lista);
+                            }
+                          }
+                     }
+                     
+                     if(liczba == 3){
+                       Scanner tj = new Scanner(System.in);
+                       String klucz = " ";
+                         while(!(klucz.equals("stop"))){
+                          kolejka.krok();
+                           if(kolejka.l.lista.size()>0){
+                            wyswietlListe();
+                            scan.wykonaj(kolejka.l.lista);
+                            }
+                          klucz = tj.nextLine();
+                         }
+                     }
+                     
+                     if(liczba ==4){
+                         zmienna = 0;
+                         wyswietlMenu();
+                         menu();
+                     }
+                   } while(zmienna == 1);
+		   break;
+	case 3:
+			
+			do {
+	             wyswietlMenu2();
+                     Scanner sc = new Scanner(System.in);
+                          int liczba = sc.nextInt();
+                          
+                     if(liczba == 1){
+                       kolejka.krok();
+                       if(kolejka.l.lista.size()>0){
+                        wyswietlListe();
+                        scan.wykonaj(kolejka.l.lista);
+                            }
+                        }
+                     
+                     if(liczba == 2){
+                       for(int i=0; i<10; i++){
+                           kolejka.krok();
+                           if(kolejka.l.lista.size()>0){
+                           wyswietlListe();
+                            scan.wykonaj(kolejka.l.lista);
+                            }
+                          }
+                     }
+                     
+                     if(liczba == 3){
+                       Scanner tj = new Scanner(System.in);
+                       String klucz = " ";
+                         while(!(klucz.equals("stop"))){
+                          kolejka.krok();
+                           if(kolejka.l.lista.size()>0){
+                            wyswietlListe();
+                            scan.wykonaj(kolejka.l.lista);
+                            }
+                          klucz = tj.nextLine();
+                         }
+                     }
+                     
+                     if(liczba ==4){
+                         zmienna = 0;
+                         wyswietlMenu();
+                         menu();
+                     }
+                   } while(zmienna == 1);
+                   break;
+	case 4:
+	         do {
+	             wyswietlMenu2();
+                     Scanner sc = new Scanner(System.in);
+                     int liczba = sc.nextInt();
+                          
+                     if(liczba == 1){
+                       kolejka.krok();
+                       if(kolejka.l.lista.size()>0){
+                        wyswietlListe();
+                        cscan.wykonaj(kolejka.l.lista);
+                            }
+                        }
+                     
+                     if(liczba == 2){
+                       for(int i=0; i<10; i++){
+                           kolejka.krok();
+                           if(kolejka.l.lista.size()>0){
+                           wyswietlListe();
+                            cscan.wykonaj(kolejka.l.lista);
+                            }
+                          }
+                     }
+                     
+                     if(liczba == 3){
+                       Scanner tj = new Scanner(System.in);
+                       String klucz = " ";
+                         while(!(klucz.equals("stop"))){
+                          kolejka.krok();
+                           if(kolejka.l.lista.size()>0){
+                            wyswietlListe();
+                            cscan.wykonaj(kolejka.l.lista);
+                            }
+                          klucz = tj.nextLine();
+                         }
+                     }
+                     
+                     if(liczba ==4){
+                         zmienna = 0;
+                         wyswietlMenu();
+                         menu();
+                     }
+                   } while(zmienna == 1);
+                   break; 	
+	case 5:
+			
+			do {
+	             wyswietlMenu2();
+                     Scanner sc = new Scanner(System.in);
+                     int liczba = sc.nextInt();
+                          
+                     if(liczba == 1){
+                       kolejka.innykrok();
+                       if(kolejka.l.lista.size()>0){
+                        wyswietlListe();
+                        edf.wykonaj(kolejka.l.lista);
+                        System.out.println("Obecnie wykonano " + edf.getWykonano() + " i przekroczono czas "
+                                    + "żądania dla " + edf.getTerminated() + " operacji");
+                            }
+                        }
+                     
+                     if(liczba == 2){
+                       for(int i=0; i<10; i++){
+                           kolejka.innykrok();
+                           if(kolejka.l.lista.size()>0){
+                           wyswietlListe();
+                            edf.wykonaj(kolejka.l.lista);
+                            System.out.println("Obecnie wykonano " + edf.getWykonano() + " i przekroczono czas "
+                                    + "żądania dla " + edf.getTerminated() + " operacji");
+                            }
+                          }
+                     }
+                     
+                     if(liczba == 3){
+                       Scanner tj = new Scanner(System.in);
+                       String klucz = " ";
+                         while(!(klucz.equals("stop"))){
+                          kolejka.innykrok();
+                           if(kolejka.l.lista.size()>0){
+                            wyswietlListe();
+                            edf.wykonaj(kolejka.l.lista);
+                            System.out.println("Obecnie wykonano " + edf.getWykonano() + " i przekroczono czas "
+                                    + "żądania dla " + edf.getTerminated() + " operacji");
+                            }
+                          klucz = tj.nextLine();
+                         }
+                     }
+                     
+                     if(liczba ==4){
+                         zmienna = 0;
+                         wyswietlMenu();
+                         menu();
+                     }
+                   } while(zmienna == 1);
+                   break; 	
+                    
+        case 6:
+                        do {
+	             wyswietlMenu2();
+                     Scanner sc = new Scanner(System.in);
+                     int liczba = sc.nextInt();
+                          
+                     if(liczba == 1){
+                       kolejka.innykrok();
+                       if(kolejka.l.lista.size()>0){
+                        wyswietlListe();
+                        fdscan.wykonaj(kolejka.l.lista);
+                        System.out.println("Obecnie wykonano " + fdscan.getWykonano() + " i przekroczono czas "
+                                    + "żądania dla " + fdscan.getTerminated() + " operacji");
+                            }
+                        }
+                     
+                     if(liczba == 2){
+                       for(int i=0; i<10; i++){
+                           kolejka.innykrok();
+                           if(kolejka.l.lista.size()>0){
+                           wyswietlListe();
+                            fdscan.wykonaj(kolejka.l.lista);
+                            System.out.println("Obecnie wykonano " + fdscan.getWykonano() + " i przekroczono czas "
+                                    + "żądania dla " + fdscan.getTerminated() + " operacji");
+                            }
+                          }
+                     }
+                     
+                     if(liczba == 3){
+                       Scanner tj = new Scanner(System.in);
+                       String klucz = " ";
+                         while(!(klucz.equals("stop"))){
+                          kolejka.innykrok();
+                           if(kolejka.l.lista.size()>0){
+                            wyswietlListe();
+                            fdscan.wykonaj(kolejka.l.lista);
+                            System.out.println("Obecnie wykonano " + fdscan.getWykonano() + " i przekroczono czas "
+                                    + "żądania dla " + fdscan.getTerminated() + " operacji");
+                            }
+                          klucz = tj.nextLine();
+                         }
+                     }
+                     
+                     if(liczba ==4){
+                         zmienna = 0;
+                         wyswietlMenu();
+                         menu();
+                     }
+                   } while(zmienna == 1);
+                   break; 	
+                    
+        case 7:
+                        System.out.println("Zakończono");
+                        break;
+                    
+		}
+	}
+	public static void main(String[] args) throws InterruptedException
+	{
+		SODysk  dysk = new SODysk();
+		dysk.wyswietlMenu();
+		dysk.menu();
+	}
+}
+    
+              
+   
