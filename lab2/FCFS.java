@@ -1,4 +1,3 @@
-
 package sodysk;
 
 import java.util.LinkedList;
