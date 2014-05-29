@@ -1,0 +1,104 @@
+
+package sodysk;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
+public class FD_SCAN extends Kolejka{
+    private OperacjaDyskowa operacja;
+    private OperacjaDyskowa operacjaPomocnicza;
+    private OperacjaDyskowa pomocniczaOperacja;
+    private OperacjaDyskowa oPomocnicza;
+    private int czasZ;
+    private int wykonano;
+    
+    public FD_SCAN(){
+        this.operacja = null;
+    }
+    
+    public OperacjaDyskowa wykonaj(LinkedList<OperacjaDyskowa> lis) throws InterruptedException { 
+        
+     if(lis.isEmpty()){
+      return null;
+     }
+     
+     else{
+         operacja = lis.getFirst();
+         for (Iterator<OperacjaDyskowa> it = lis.iterator(); it.hasNext();) {
+                operacjaPomocnicza = it.next();
+                if(operacja.getDeadline() > operacjaPomocnicza.getDeadline()){
+                     operacja = operacjaPomocnicza;}
+                
+                if(operacja.getDeadline() == operacjaPomocnicza.getDeadline()){
+                 if(Math.abs(getGlowica()-operacja.getNrBloku()) > Math.abs(getGlowica() - operacjaPomocnicza.getNrBloku())){
+                    operacja = operacjaPomocnicza;
+                    }
+                 }
+         }
+         if(operacja.getNrBloku() > getGlowica()){
+             ZcJ = 0;
+         }
+         else if(operacja.getNrBloku() < getGlowica()){
+             ZcJ = 1;
+         }
+         do{
+           przesuwajGlowice();
+           for (Iterator<OperacjaDyskowa> it = lis.iterator(); it.hasNext();) {
+            pomocniczaOperacja = it.next();
+             if(pomocniczaOperacja.getNrBloku() == getGlowica()){
+                 operacja = pomocniczaOperacja;
+             }
+           }
+         }while(operacja.getNrBloku() != getGlowica());
+         
+         System.out.println("Teraz wykonuje : " + operacja);
+         int f = operacja.getCzas();
+         int p = 0;
+         while(p != f){             
+         p++;
+         System.out.println("Wykonano " + p + " z " + f);
+         }
+         wykonano++;
+         
+         
+         for (Iterator<OperacjaDyskowa> it = lis.iterator(); it.hasNext();) {
+          oPomocnicza = it.next();
+          
+          if(oPomocnicza.equals(operacja)){
+              it.remove();
+               if(it.hasNext()){
+                   oPomocnicza = it.next();
+               }
+               else{
+                   break;
+               }
+          }
+          if((oPomocnicza.deadline - p) <=0){
+              it.remove();
+              czasZ ++;
+          }
+          if((oPomocnicza.deadline - p) > 0){
+              oPomocnicza.deadline -= p;
+          }
+         
+     }
+         System.out.println("Glowica na miejscu bloku o numerze :" + getGlowica()
+                            + " wykonano " + getSumaPrzem() + " przemieszczen Glowicy ");
+     }
+     return operacja;
+    }
+    
+    
+    public int getWykonano(){
+        return wykonano;
+    }
+    
+    public int getTerminated(){
+        return czasZ;
+    }
+    
+     @Override
+    public String toString(){
+        return operacja + "glowica znajduje sie obecnie na miejscu " + getGlowica() + "wykonano " + getSumaPrzem() + " Przemieszczen.";
+    }
+   }
