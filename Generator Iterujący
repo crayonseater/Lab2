@@ -1,0 +1,100 @@
+
+package sodysk;
+
+import java.util.Random;
+
+public class GeneratorIterujacy {
+    
+    Random r = new Random();
+    private int doLiczby = 100;  // górna granica losowania obszar nr 100 na dysku
+    private int odLiczby = 1;    // dolna granica losowania obszar nr 1 na dysku
+    private int losowy;        // zmienna do której przypisywany jest wynik losowania
+    private int zakresIt = 4; // zakres do jakiego może być wylosowana liczba iteracji
+    private int ZcJ = 1;     //Zero Czy Jeden? Jedynka = zwracanie , zero = puste "przejścia" , aby nie zapychać kolejki  
+    private int losowaIt;   // zmienna pomocnicza do przechowywania losowanej wartosci iteracji 
+    private int zmiennaPomocnicza = 0; // Gdy równa 0 losowana liczba iteracji 
+    private int ajdi = 1; // ID losowanego procesu , pierwszy ma wartość 1 i jest stopniowo zwiększany
+    private int losujdlugosc; // losowanie dlugosci procesu (jak dlugo bedzie się wykonywać)
+    private int losujdeadline; // losowanie deadline procesu (priorytet)
+  
+   
+    /**
+     * Dwie prawie identyczne metody losujące , druga z nich losuje dodatkowo długość oraz deadline
+     */
+    
+    
+    public OperacjaDyskowa getRandom() {
+     losowy = r.nextInt(doLiczby-odLiczby+1)+odLiczby;
+        
+          if(zmiennaPomocnicza == 0){
+              
+              if(ZcJ == 0){
+                 losowaIt = r.nextInt(zakresIt);
+                 zmiennaPomocnicza = losowaIt;
+              }
+              
+              if(ZcJ == 1){
+                  losowaIt = r.nextInt(zakresIt)*2;
+                  zmiennaPomocnicza = losowaIt;
+                   }
+          }
+          
+          
+             if(ZcJ == 0){
+                   zmiennaPomocnicza --;
+                   if(zmiennaPomocnicza == 0){
+                   ZcJ = 1;
+                 }
+              return null;
+             }
+             
+             if (ZcJ == 1){
+             zmiennaPomocnicza --;
+             if(zmiennaPomocnicza ==0){
+             ZcJ = 0;
+            }
+          return new OperacjaDyskowa(losowy, ajdi++);
+         }
+    
+         
+      return new OperacjaDyskowa(losowy, ajdi++);
+    }
+    
+    public OperacjaDyskowa getRandom2(){
+         losowy = r.nextInt(doLiczby-odLiczby+1)+odLiczby;
+         losujdlugosc = r.nextInt(4-1+1)+1;
+         losujdeadline = r.nextInt(10-1+1)+1;
+          if(zmiennaPomocnicza == 0){
+              if(ZcJ == 0){
+                 losowaIt = r.nextInt(zakresIt);
+                 zmiennaPomocnicza = losowaIt;
+              }
+              if(ZcJ == 1){
+                  losowaIt = r.nextInt(zakresIt);
+                   zmiennaPomocnicza = losowaIt;
+                   }
+          }
+             if(ZcJ == 0){
+                   zmiennaPomocnicza --;
+                    if(zmiennaPomocnicza == 0){
+                     ZcJ = 1;
+                 }
+              return null;
+             }
+                if (ZcJ == 1){
+                  zmiennaPomocnicza --;
+                   if(zmiennaPomocnicza ==0){
+                       ZcJ = 0;
+                   }
+                   return new OperacjaDyskowa(losowy, ajdi++, losujdlugosc, losujdeadline);
+         }
+     return new OperacjaDyskowa(losowy, ajdi++, losujdlugosc, losujdeadline);
+    }
+    
+    
+    @Override
+    public String toString(){
+        return String.format("Zakres od =%d do=%d Z.Czekania=%d",odLiczby, doLiczby, zakresIt);
+    }
+}
+
